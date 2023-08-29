@@ -1,6 +1,8 @@
 <?php
 
-if(!isset($_GET['id'])) {header('Location: index.php?page=dashboard');}
+if (!isset($_GET['id'])) {
+  header('Location: index.php?page=dashboard');
+}
 
 $id = $_GET['id'];
 
@@ -19,7 +21,7 @@ $a = $appointment->find([
       <div class="row">
 
         <div class="col-12">
-          <div class="card top-selling overflow-auto">
+          <div class="card top-elling overflow-auto">
 
             <div class="card-body pb-0">
               <h5 class="card-title">
@@ -29,7 +31,7 @@ $a = $appointment->find([
                     <i class="bi bi-pencil"></i> Edit
                 </div>
               </h5>
-              
+
               <div class="row">
                 <div class="col-md-6">
                   <div class="mb-3">
@@ -40,7 +42,8 @@ $a = $appointment->find([
                 <div class="col-md-6">
                   <div class="mb-3">
                     <label for="patient_id" class="form-label">Patient</label>
-                    <?php $patient = new Patientes(); $p = $patient->find(['conditions' => 'user_id = ?', 'bind' => [$a->patient_id]])[0]; ?>
+                    <?php $patient = new Patientes();
+                    $p = $patient->find(['conditions' => 'user_id = ?', 'bind' => [$a->patient_id]])[0]; ?>
                     <input type="text" name="patient_id" class="form-control" value="<?= $p->user_first_name . ' ' . $p->user_last_name ?>" disabled>
                   </div>
                 </div>
@@ -58,8 +61,7 @@ $a = $appointment->find([
 </section>
 
 <!-- Add Appointment Modal -->
-<div class="modal fade" id="addAppointmentModal" tabindex="-1" aria-labelledby="addAppointmentModalLabel"
-  aria-hidden="true">
+<div class="modal fade" id="addAppointmentModal" tabindex="-1" aria-labelledby="addAppointmentModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -74,8 +76,8 @@ $a = $appointment->find([
           <div class="mb-3">
             <label for="doctor_id" class="form-label">Doctor</label>
             <select name="doctor_id" class="form-control form-select">
-              <?php foreach($doctors as $d): ?>
-              <option value="<?= $d->user_id ?>"><?= $d->user_first_name . ' ' . $d->user_last_name ?></option>
+              <?php foreach ($doctors as $d) : ?>
+                <option value="<?= $d->user_id ?>"><?= $d->user_first_name . ' ' . $d->user_last_name ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -83,8 +85,8 @@ $a = $appointment->find([
           <div class="mb-3">
             <label for="user_id" class="form-label">Patient</label>
             <select name="patient_id" class="form-control form-select">
-              <?php foreach($patients as $p): ?>
-              <option value="<?= $p->user_id ?>"><?= $p->user_first_name . ' ' . $p->user_last_name ?></option>
+              <?php foreach ($patients as $p) : ?>
+                <option value="<?= $p->user_id ?>"><?= $p->user_first_name . ' ' . $p->user_last_name ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -104,8 +106,7 @@ $a = $appointment->find([
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="appointment_datetime" class="form-label">Appointment Date and Time</label>
-                <input type="datetime-local" class="form-control" id="appointment_datetime" name="datetime"
-                  required>
+                <input type="datetime-local" class="form-control" id="appointment_datetime" name="datetime" required>
               </div>
             </div>
           </div>
