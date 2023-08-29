@@ -1,0 +1,37 @@
+<div class="card mb-3">
+
+    <div class="card-body">
+
+        <div class="pt-4 pb-2">
+            <h5 class="card-title text-center pb-0 fs-4">
+                <i class="bi bi-person-gear"></i> Admin Portal
+            </h5>
+            <p class="text-center small">Enter your username & password to login</p>
+        </div>
+
+        <?= Session::display_session_msg(); ?>
+
+        <form class="row g-3 needs-validation" novalidate method="POST" action="?page=login">
+
+            <div class="col-12">
+                <label for="yourUsername" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input type="text" name="user_name" class="form-control" id="yourUsername" required autofocus value="<?= Input::get('user_name') ?>">
+                    <div class="invalid-feedback">Please enter your username.</div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="yourPassword" class="form-label">Password</label>
+                <input type="password" name="user_password" class="form-control" id="yourPassword" required>
+                <div class="invalid-feedback">Please enter your password!</div>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary w-100" type="submit">Login</button>
+            </div>
+        </form>
+
+    </div>
+</div>
